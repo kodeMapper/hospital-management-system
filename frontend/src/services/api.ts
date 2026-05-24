@@ -1,4 +1,5 @@
 let API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://hms-crt.up.railway.app/api';
+if (!API_BASE_URL.startsWith('http')) API_BASE_URL = 'https://' + API_BASE_URL;
 if (API_BASE_URL.endsWith('/')) API_BASE_URL = API_BASE_URL.slice(0, -1);
 if (!API_BASE_URL.endsWith('/api')) API_BASE_URL += '/api';
 
