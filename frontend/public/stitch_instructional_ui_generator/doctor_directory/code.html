@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Apollo Hospital - Doctor Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "surface-container": "#ededf9",
+                "error-container": "#ffdad6",
+                "error": "#ba1a1a",
+                "surface-bright": "#faf8ff",
+                "on-primary-fixed": "#00174b",
+                "inverse-on-surface": "#f0f0fb",
+                "critical-red": "#EF4444",
+                "on-secondary": "#ffffff",
+                "inverse-primary": "#b4c5ff",
+                "on-tertiary-fixed-variant": "#7d2d00",
+                "on-background": "#191b23",
+                "on-error": "#ffffff",
+                "surface-off-white": "#F8FAFC",
+                "on-tertiary-container": "#ffede6",
+                "on-secondary-fixed": "#002113",
+                "slate-dark": "#1E293B",
+                "on-secondary-fixed-variant": "#005236",
+                "secondary": "#006c49",
+                "warning-orange": "#F59E0B",
+                "on-primary-container": "#eeefff",
+                "primary-container": "#2563eb",
+                "secondary-fixed": "#6ffbbe",
+                "surface-dim": "#d9d9e5",
+                "on-secondary-container": "#00714d",
+                "background": "#faf8ff",
+                "tertiary": "#943700",
+                "primary-fixed-dim": "#b4c5ff",
+                "primary-fixed": "#dbe1ff",
+                "surface-container-highest": "#e1e2ed",
+                "on-surface-variant": "#434655",
+                "secondary-container": "#6cf8bb",
+                "on-tertiary": "#ffffff",
+                "secondary-fixed-dim": "#4edea3",
+                "surface-container-lowest": "#ffffff",
+                "slate-muted": "#64748B",
+                "inverse-surface": "#2e3039",
+                "outline": "#737686",
+                "tertiary-fixed": "#ffdbcd",
+                "on-primary": "#ffffff",
+                "surface-container-low": "#f3f3fe",
+                "surface": "#faf8ff",
+                "on-primary-fixed-variant": "#003ea8",
+                "on-tertiary-fixed": "#360f00",
+                "surface-container-high": "#e7e7f3",
+                "surface-variant": "#e1e2ed",
+                "on-error-container": "#93000a",
+                "primary": "#004ac6",
+                "tertiary-container": "#bc4800",
+                "surface-tint": "#0053db",
+                "tertiary-fixed-dim": "#ffb596",
+                "outline-variant": "#c3c6d7",
+                "on-surface": "#191b23",
+                "mint-bg": "#F0FDFA"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "gutter": "24px",
+                "margin-desktop": "32px",
+                "stack-md": "16px",
+                "stack-lg": "24px",
+                "margin-mobile": "16px",
+                "sidebar-width": "260px",
+                "container-max": "1440px",
+                "stack-sm": "8px"
+        },
+        "fontFamily": {
+                "body-lg": [
+                        "Inter"
+                ],
+                "headline-lg-mobile": [
+                        "Inter"
+                ],
+                "label-sm": [
+                        "Inter"
+                ],
+                "headline-md": [
+                        "Inter"
+                ],
+                "headline-lg": [
+                        "Inter"
+                ],
+                "body-md": [
+                        "Inter"
+                ],
+                "label-md": [
+                        "Inter"
+                ],
+                "display-lg": [
+                        "Inter"
+                ]
+        },
+        "fontSize": {
+                "body-lg": [
+                        "18px",
+                        {
+                                "lineHeight": "1.6",
+                                "fontWeight": "400"
+                        }
+                ],
+                "headline-lg-mobile": [
+                        "24px",
+                        {
+                                "lineHeight": "1.3",
+                                "fontWeight": "600"
+                        }
+                ],
+                "label-sm": [
+                        "12px",
+                        {
+                                "lineHeight": "1.4",
+                                "fontWeight": "600"
+                        }
+                ],
+                "headline-md": [
+                        "24px",
+                        {
+                                "lineHeight": "1.4",
+                                "fontWeight": "600"
+                        }
+                ],
+                "headline-lg": [
+                        "32px",
+                        {
+                                "lineHeight": "1.3",
+                                "fontWeight": "600"
+                        }
+                ],
+                "body-md": [
+                        "16px",
+                        {
+                                "lineHeight": "1.6",
+                                "fontWeight": "400"
+                        }
+                ],
+                "label-md": [
+                        "14px",
+                        {
+                                "lineHeight": "1.4",
+                                "letterSpacing": "0.01em",
+                                "fontWeight": "500"
+                        }
+                ],
+                "display-lg": [
+                        "48px",
+                        {
+                                "lineHeight": "1.2",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface-off-white text-on-surface flex flex-col md:flex-row min-h-screen">
+<!-- TopNavBar (Mobile Only) -->
+<nav class="md:hidden bg-white/80 backdrop-blur-md h-16 w-full sticky top-0 z-40 border-b border-outline-variant/20 shadow-sm flex justify-between items-center px-margin-mobile">
+<div class="font-headline-md text-headline-md font-black text-secondary">Apollo Hospital</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+<img alt="Administrator Avatar" class="w-8 h-8 rounded-full object-cover shadow-sm" data-alt="A professional headshot of a smiling female healthcare administrator wearing a modern blazer. The background is a brightly lit, clean hospital corridor. The lighting is soft and flattering, highlighting her approachability and authority in a clinical-fresh setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3uU2yNJLZg20t4HZc7CR65CZZr7vJthJw8SNuBvMk561p1KzUVt7v_PbJnu4Fe5CdANGfO0xcKsVnG7EBe4rGro9ffAnOEX0nZ4hBjXre-YbssPry00QDpwJ1ApxtUvaCanf1a1rxGrFK1qFDdG-uCiJn5zfEma0LA0XbesAoOZ_nqMW81Mqwq4-cLO6rnzJyQ7gMAYF4kryQV7Xlv8AaZr7IdZvcOuxeugLD3ADECvhnk4R0dwg5ouyC2ahGOqdg3hTp0XZR0h0"/>
+</div>
+</nav>
+<!-- SideNavBar (Desktop) -->
+<aside class="hidden md:flex bg-surface w-sidebar-width h-screen sticky left-0 top-0 bg-surface/80 backdrop-blur-md shadow-sm flex-col py-stack-lg border-r border-outline-variant/30">
+<div class="px-margin-desktop mb-8">
+<div class="font-headline-md text-headline-md font-bold text-secondary mb-2">Apollo Hospital</div>
+<div class="flex items-center gap-3">
+<img alt="Admin Profile Picture" class="w-10 h-10 rounded-full object-cover shadow-sm" data-alt="A professional headshot of a smiling female healthcare administrator wearing a modern blazer. The background is a brightly lit, clean hospital corridor. The lighting is soft and flattering, highlighting her approachability and authority in a clinical-fresh setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD88j2yx0S0JN2GR1QnpG4Y9rIWUNDZ9gor9yasNe2I5n3MxpuPF88DFIhzkD_iM1qCMxkV8xhS73M7R4QJHAjZxooBjccvhOXPNCM_tq0lYe4PIxEKkqEJk_RWM8DByDm07e4rrs6UIMIX5BWxb6a-_LifzAYxgjaF_4UMzxfzAqWzsP59OOO90V-Xz8UMSOpnmzopYQpsZJbabQZlVoMpf70LC3VVjWZXw1qxB7EfF2LmsYls6TbZoBZf3jjpo3jjmqPhb27Q6BM"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold">Sarah Jenkins</span>
+<span class="font-label-sm text-label-sm text-slate-muted">Hospital Administrator</span>
+</div>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-1 px-4">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-muted hover:text-secondary hover:bg-surface-container-low transition-colors duration-200 cursor-pointer active:scale-95 font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-muted hover:text-secondary hover:bg-surface-container-low transition-colors duration-200 cursor-pointer active:scale-95 font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">person</span>
+                Patients
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-mint-bg text-primary font-semibold border-r-4 border-primary cursor-pointer active:scale-95 font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">medical_services</span>
+                Doctors
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-muted hover:text-secondary hover:bg-surface-container-low transition-colors duration-200 cursor-pointer active:scale-95 font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">event</span>
+                Appointments
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-muted hover:text-secondary hover:bg-surface-container-low transition-colors duration-200 cursor-pointer active:scale-95 font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+                Departments
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-muted hover:text-secondary hover:bg-surface-container-low transition-colors duration-200 cursor-pointer active:scale-95 font-body-md text-body-md mt-auto" href="#">
+<span class="material-symbols-outlined">settings</span>
+                Settings
+            </a>
+</nav>
+<div class="px-4 mt-6">
+<button class="w-full bg-secondary text-on-secondary py-3 rounded-lg font-label-md text-label-md font-semibold hover:bg-secondary-container transition-colors shadow-sm flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">add</span>
+                New Admission
+            </button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 w-full max-w-container-max mx-auto p-margin-mobile md:p-margin-desktop overflow-y-auto">
+<!-- Header -->
+<header class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+<div>
+<h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-1">Doctors Directory</h1>
+<p class="font-body-md text-body-md text-slate-muted">Manage hospital staff, view specialties, and oversee departments.</p>
+</div>
+<div class="flex items-center gap-3 w-full md:w-auto">
+<div class="relative flex-1 md:w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-muted">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-white border border-outline-variant/50 rounded-lg font-body-md text-body-md focus:border-secondary focus:ring-1 focus:ring-secondary outline-none shadow-sm transition-shadow" placeholder="Search doctors..." type="text"/>
+</div>
+<button class="bg-secondary text-on-secondary px-4 py-2 rounded-lg font-label-md text-label-md font-semibold hover:bg-secondary-container transition-colors shadow-sm flex items-center gap-2 whitespace-nowrap">
+<span class="material-symbols-outlined text-sm">add</span>
+                    Add Doctor
+                </button>
+</div>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Doctors Grid (Spans 8 columns on large screens) -->
+<div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+<!-- Doctor Card 1 -->
+<div class="bg-white rounded-xl p-5 shadow-[0_4px_20px_rgba(30,41,59,0.05)] border border-outline-variant/10 hover:shadow-[0_10px_30px_rgba(30,41,59,0.1)] transition-shadow group relative overflow-hidden">
+<div class="absolute top-0 right-0 p-3">
+<span class="material-symbols-outlined text-slate-muted hover:text-secondary cursor-pointer text-sm">more_vert</span>
+</div>
+<div class="flex flex-col items-center text-center mb-4">
+<img alt="Dr. Robert Chen" class="w-20 h-20 rounded-full object-cover mb-3 border-2 border-white shadow-sm ring-2 ring-secondary/10 group-hover:ring-secondary/30 transition-all" data-alt="A portrait of a male doctor in a crisp white lab coat with a stethoscope around his neck. He has a warm, confident smile and is standing in a brightly lit modern hospital corridor. The lighting is soft and clinical, conveying trust and professionalism." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGXhRqL4CMqPoAOnY7mH-xBYwnVAbb4gIBb9ZDqXDJkaAQa5QB9cL2jvtDiFCBp_a3yUM0PbpXTq0zcS5TetlPCu5Byyj9KET9jMr-9jc4ycF6v3zYtemaDkhiPJwRO_s04Y9VD84peuvhFLk4FcKkt4BDV6nFCeR4f06rQ9p-TP7Xg9wEkJlT-bKxq3hjEi5MGoXEILRvJr1zwqucWynU4ObetouvCILWdjfKYTd0S3FTziRzFMJAEe3meynN0mlZEY_PnH4qaro"/>
+<h3 class="font-label-md text-label-md font-bold text-on-surface">Dr. Robert Chen</h3>
+<p class="font-label-sm text-label-sm text-slate-muted mb-2">Chief of Surgery</p>
+<span class="bg-mint-bg text-primary px-2 py-1 rounded text-[10px] font-semibold uppercase tracking-wider">General Surgery</span>
+</div>
+<div class="border-t border-outline-variant/10 pt-4 flex flex-col gap-2">
+<div class="flex items-center gap-2 text-slate-muted font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">mail</span>
+<span class="truncate">rchen@apollohospital.com</span>
+</div>
+<div class="flex justify-between items-center mt-2">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">12 Patients Today</span>
+<span class="bg-secondary/10 text-secondary px-2 py-0.5 rounded text-[10px] font-semibold">Available</span>
+</div>
+</div>
+</div>
+<!-- Doctor Card 2 -->
+<div class="bg-white rounded-xl p-5 shadow-[0_4px_20px_rgba(30,41,59,0.05)] border border-outline-variant/10 hover:shadow-[0_10px_30px_rgba(30,41,59,0.1)] transition-shadow group relative overflow-hidden">
+<div class="absolute top-0 right-0 p-3">
+<span class="material-symbols-outlined text-slate-muted hover:text-secondary cursor-pointer text-sm">more_vert</span>
+</div>
+<div class="flex flex-col items-center text-center mb-4">
+<img alt="Dr. Emily Thorne" class="w-20 h-20 rounded-full object-cover mb-3 border-2 border-white shadow-sm ring-2 ring-secondary/10 group-hover:ring-secondary/30 transition-all" data-alt="A professional portrait of a female doctor wearing scrubs and a stethoscope. She looks focused and empathetic, standing against a blurred background of a modern clinic room. The overall tone is bright, clean, and reassuring." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBifW0I0j7_oYicT5WMgg7-W4OlTWm_ZIwodoqVqoXK7rnYHcwUGW0Ow46jmNdjty5s8MtVHkr1C9NEGfM3e6roeeUYpbZYL_6nwpaEVD_KVqtJFMTr9Xs1MX9xlsYkMhGi_9ee2YyUJvUUT9aAJBjxwMujNLv1WKlFYMZxC2g3fuPMXredvYd-YDV5tQcTCnHNX3x3WK6Vx1_MRPiTqUhLz3F9cSJNb4EnMA03zLRdbDHetiF6NbKUkq4Z--om3nGmT-cgwgZ9DJs"/>
+<h3 class="font-label-md text-label-md font-bold text-on-surface">Dr. Emily Thorne</h3>
+<p class="font-label-sm text-label-sm text-slate-muted mb-2">Senior Cardiologist</p>
+<span class="bg-secondary/10 text-secondary px-2 py-1 rounded text-[10px] font-semibold uppercase tracking-wider">Cardiology</span>
+</div>
+<div class="border-t border-outline-variant/10 pt-4 flex flex-col gap-2">
+<div class="flex items-center gap-2 text-slate-muted font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">mail</span>
+<span class="truncate">ethorne@apollohospital.com</span>
+</div>
+<div class="flex justify-between items-center mt-2">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">8 Patients Today</span>
+<span class="bg-warning-orange/10 text-warning-orange px-2 py-0.5 rounded text-[10px] font-semibold">In Surgery</span>
+</div>
+</div>
+</div>
+<!-- Doctor Card 3 -->
+<div class="bg-white rounded-xl p-5 shadow-[0_4px_20px_rgba(30,41,59,0.05)] border border-outline-variant/10 hover:shadow-[0_10px_30px_rgba(30,41,59,0.1)] transition-shadow group relative overflow-hidden">
+<div class="absolute top-0 right-0 p-3">
+<span class="material-symbols-outlined text-slate-muted hover:text-secondary cursor-pointer text-sm">more_vert</span>
+</div>
+<div class="flex flex-col items-center text-center mb-4">
+<img alt="Dr. Marcus Bell" class="w-20 h-20 rounded-full object-cover mb-3 border-2 border-white shadow-sm ring-2 ring-secondary/10 group-hover:ring-secondary/30 transition-all" data-alt="A headshot of a male pediatrician in a light blue shirt and tie, wearing a stethoscope. He is smiling warmly in a bright, airy hospital waiting area designed for children. The lighting is high-key and inviting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgZ2tSaPAzr4JUR2fCzZYR7_uGtJYshcxdsygOqWcCHubxsFDYdJipvQI7VimVUMGRFow7Omvu5SlADvpSln3_eRTDMm6ntj-j0oifROS_HTFGPJMZ48giKZ0HB66PnAAbgzpayZbOOoSMo4sqFtWzogoMLPhLfvs2zjzCM8v84M-v_gyT8QACSWmUVzOIscL6xY0joqa5huWqG7xuL7VPpG7VqppZ_GTpp9Csgwgf8Rh4NkVPIPzngnESEwa11yIC8ym0UmE4xSM"/>
+<h3 class="font-label-md text-label-md font-bold text-on-surface">Dr. Marcus Bell</h3>
+<p class="font-label-sm text-label-sm text-slate-muted mb-2">Pediatrician</p>
+<span class="bg-tertiary-fixed-dim/20 text-tertiary px-2 py-1 rounded text-[10px] font-semibold uppercase tracking-wider">Pediatrics</span>
+</div>
+<div class="border-t border-outline-variant/10 pt-4 flex flex-col gap-2">
+<div class="flex items-center gap-2 text-slate-muted font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">mail</span>
+<span class="truncate">mbell@apollohospital.com</span>
+</div>
+<div class="flex justify-between items-center mt-2">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">15 Patients Today</span>
+<span class="bg-secondary/10 text-secondary px-2 py-0.5 rounded text-[10px] font-semibold">Available</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Departments Sidebar (Spans 4 columns) -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<div class="bg-white rounded-xl shadow-[0_4px_20px_rgba(30,41,59,0.05)] border border-outline-variant/10 overflow-hidden flex flex-col h-full">
+<div class="p-5 border-b border-outline-variant/10 bg-surface-off-white/50 flex justify-between items-center">
+<h2 class="font-label-md text-label-md font-bold text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">domain</span>
+                            Departments overview
+                        </h2>
+<span class="material-symbols-outlined text-slate-muted hover:text-secondary cursor-pointer text-sm">filter_list</span>
+</div>
+<div class="p-4 flex-1 overflow-y-auto">
+<ul class="flex flex-col gap-2">
+<li class="p-3 rounded-lg hover:bg-mint-bg group cursor-pointer transition-colors border border-transparent hover:border-primary/20">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-md text-label-md font-semibold text-on-surface group-hover:text-primary transition-colors">Cardiology</span>
+<span class="bg-surface-container text-slate-muted px-2 py-0.5 rounded text-[10px] font-semibold">12 Staff</span>
+</div>
+<div class="flex items-center gap-2">
+<img alt="Dr. Thorne" class="w-6 h-6 rounded-full object-cover" data-alt="Small thumbnail of Dr. Emily Thorne, female doctor in scrubs." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXPy4dBkH87w8JEo5xBscPQClW1hAeL3D_Kl9SnzMLhcrYDUwUrTCKVwDEsU81Inj6-Y2Ms5E63TByzsJ0jaT6nElVVIg_fn_g9Q6HUEU1DOKZiPOZZQxa52jAuKK-HpdY2WB9BKuYayZpxLQaOR7cA4u42LLouKct8pzOWQkBS9ThKb_Oml02P48c5anw3lSWB1EpdtUEALq02xvP87VPcjlOUINcXC0TyQlDkADReozOUTUBFArb-FP07b9ltFdiKFiPu2BJ_cs"/>
+<span class="font-label-sm text-label-sm text-slate-muted">Head: Dr. Emily Thorne</span>
+</div>
+</li>
+<li class="p-3 rounded-lg hover:bg-mint-bg group cursor-pointer transition-colors border border-transparent hover:border-primary/20">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-md text-label-md font-semibold text-on-surface group-hover:text-primary transition-colors">General Surgery</span>
+<span class="bg-surface-container text-slate-muted px-2 py-0.5 rounded text-[10px] font-semibold">8 Staff</span>
+</div>
+<div class="flex items-center gap-2">
+<img alt="Dr. Chen" class="w-6 h-6 rounded-full object-cover" data-alt="Small thumbnail of Dr. Robert Chen, male doctor in white coat." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXEJY5qYfWsJ60XRzmJnNtYBxwkHj-cKbWXthJZBsK7sVige2RtVzmM3Ddf7VOkBYlIXJpb0BONLLolWusXd0U3fk_TAbcvEByAoH9l6561bIKnvvPwyX0THU0b-eWoAcxjcgCyWNtqunZXJJJrm5vg9lZKkOBE9ZAsPN6lb6XnkkY4lsWnl_ZTCemBYqyfAkYtYYU5tyyStRtS5804VlfL1eT6Yg0RKGaw4f1zx7BsE7Gs7HffDq8yra4ZXGvaAQqNz-czDg_Ifg"/>
+<span class="font-label-sm text-label-sm text-slate-muted">Head: Dr. Robert Chen</span>
+</div>
+</li>
+<li class="p-3 rounded-lg hover:bg-mint-bg group cursor-pointer transition-colors border border-transparent hover:border-primary/20">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-md text-label-md font-semibold text-on-surface group-hover:text-primary transition-colors">Pediatrics</span>
+<span class="bg-surface-container text-slate-muted px-2 py-0.5 rounded text-[10px] font-semibold">15 Staff</span>
+</div>
+<div class="flex items-center gap-2">
+<img alt="Dr. Bell" class="w-6 h-6 rounded-full object-cover" data-alt="Small thumbnail of Dr. Marcus Bell, male doctor in blue shirt." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbroPHNEPyR2EF7G4mphOV01zAxH6bIeVN9kJN75xsTf9QnFD9hRe7NwgiUH4x_5oWYdip7N_d1HwlRTgq_0VkuahOlX2aIXHMex2hscrwj_i8fnwTQ8UUQO4-PVofQUfXutis5iosKavusX0X2MB0aVB08Hn4NcfUZ7sol1vFUNuHjHLiVbXpv29U6LWghhjYeqQG6BsLvDrgqZCl3wPyLzkN0fWtPBBnCwxsv0Unj81dnPovZGZFLysTtzpgrFNbSAe-_4SH2Yw"/>
+<span class="font-label-sm text-label-sm text-slate-muted">Head: Dr. Marcus Bell</span>
+</div>
+</li>
+<li class="p-3 rounded-lg hover:bg-mint-bg group cursor-pointer transition-colors border border-transparent hover:border-primary/20">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-md text-label-md font-semibold text-on-surface group-hover:text-primary transition-colors">Neurology</span>
+<span class="bg-surface-container text-slate-muted px-2 py-0.5 rounded text-[10px] font-semibold">6 Staff</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-variant flex items-center justify-center text-[10px] font-bold text-slate-muted">AS</div>
+<span class="font-label-sm text-label-sm text-slate-muted">Head: Dr. Alistair Smythe</span>
+</div>
+</li>
+</ul>
+</div>
+<div class="p-4 border-t border-outline-variant/10 text-center">
+<button class="text-secondary hover:text-secondary-container font-label-sm text-label-sm font-semibold flex items-center justify-center gap-1 w-full">
+                            View All Departments <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

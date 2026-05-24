@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Apollo Hospital - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "surface-container": "#ededf9",
+                "error-container": "#ffdad6",
+                "error": "#ba1a1a",
+                "surface-bright": "#faf8ff",
+                "on-primary-fixed": "#00174b",
+                "inverse-on-surface": "#f0f0fb",
+                "critical-red": "#EF4444",
+                "on-secondary": "#ffffff",
+                "inverse-primary": "#b4c5ff",
+                "on-tertiary-fixed-variant": "#7d2d00",
+                "on-background": "#191b23",
+                "on-error": "#ffffff",
+                "surface-off-white": "#F8FAFC",
+                "on-tertiary-container": "#ffede6",
+                "on-secondary-fixed": "#002113",
+                "slate-dark": "#1E293B",
+                "on-secondary-fixed-variant": "#005236",
+                "secondary": "#006c49",
+                "warning-orange": "#F59E0B",
+                "on-primary-container": "#eeefff",
+                "primary-container": "#2563eb",
+                "secondary-fixed": "#6ffbbe",
+                "surface-dim": "#d9d9e5",
+                "on-secondary-container": "#00714d",
+                "background": "#faf8ff",
+                "tertiary": "#943700",
+                "primary-fixed-dim": "#b4c5ff",
+                "primary-fixed": "#dbe1ff",
+                "surface-container-highest": "#e1e2ed",
+                "on-surface-variant": "#434655",
+                "secondary-container": "#6cf8bb",
+                "on-tertiary": "#ffffff",
+                "secondary-fixed-dim": "#4edea3",
+                "surface-container-lowest": "#ffffff",
+                "slate-muted": "#64748B",
+                "inverse-surface": "#2e3039",
+                "outline": "#737686",
+                "tertiary-fixed": "#ffdbcd",
+                "on-primary": "#ffffff",
+                "surface-container-low": "#f3f3fe",
+                "surface": "#faf8ff",
+                "on-primary-fixed-variant": "#003ea8",
+                "on-tertiary-fixed": "#360f00",
+                "surface-container-high": "#e7e7f3",
+                "surface-variant": "#e1e2ed",
+                "on-error-container": "#93000a",
+                "primary": "#004ac6",
+                "tertiary-container": "#bc4800",
+                "surface-tint": "#0053db",
+                "tertiary-fixed-dim": "#ffb596",
+                "outline-variant": "#c3c6d7",
+                "on-surface": "#191b23",
+                "mint-bg": "#F0FDFA"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "gutter": "24px",
+                "margin-desktop": "32px",
+                "stack-md": "16px",
+                "stack-lg": "24px",
+                "margin-mobile": "16px",
+                "sidebar-width": "260px",
+                "container-max": "1440px",
+                "stack-sm": "8px"
+        },
+        "fontFamily": {
+                "body-lg": [
+                        "Inter"
+                ],
+                "headline-lg-mobile": [
+                        "Inter"
+                ],
+                "label-sm": [
+                        "Inter"
+                ],
+                "headline-md": [
+                        "Inter"
+                ],
+                "headline-lg": [
+                        "Inter"
+                ],
+                "body-md": [
+                        "Inter"
+                ],
+                "label-md": [
+                        "Inter"
+                ],
+                "display-lg": [
+                        "Inter"
+                ]
+        },
+        "fontSize": {
+                "body-lg": [
+                        "18px",
+                        {
+                                "lineHeight": "1.6",
+                                "fontWeight": "400"
+                        }
+                ],
+                "headline-lg-mobile": [
+                        "24px",
+                        {
+                                "lineHeight": "1.3",
+                                "fontWeight": "600"
+                        }
+                ],
+                "label-sm": [
+                        "12px",
+                        {
+                                "lineHeight": "1.4",
+                                "fontWeight": "600"
+                        }
+                ],
+                "headline-md": [
+                        "24px",
+                        {
+                                "lineHeight": "1.4",
+                                "fontWeight": "600"
+                        }
+                ],
+                "headline-lg": [
+                        "32px",
+                        {
+                                "lineHeight": "1.3",
+                                "fontWeight": "600"
+                        }
+                ],
+                "body-md": [
+                        "16px",
+                        {
+                                "lineHeight": "1.6",
+                                "fontWeight": "400"
+                        }
+                ],
+                "label-md": [
+                        "14px",
+                        {
+                                "lineHeight": "1.4",
+                                "letterSpacing": "0.01em",
+                                "fontWeight": "500"
+                        }
+                ],
+                "display-lg": [
+                        "48px",
+                        {
+                                "lineHeight": "1.2",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+        body { background-color: theme('colors.surface-off-white'); color: theme('colors.on-surface'); }
+        .glass-card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.3); }
+        .card-shadow { box-shadow: 0px 4px 20px rgba(30, 41, 59, 0.05); }
+    </style>
+</head>
+<body class="flex min-h-screen overflow-x-hidden font-body-md text-body-md">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-screen sticky left-0 top-0 w-sidebar-width bg-surface/80 backdrop-blur-md shadow-sm border-r border-outline-variant/30 py-stack-lg z-50">
+<div class="px-6 mb-8">
+<h1 class="font-headline-md text-headline-md font-bold text-secondary">Apollo Hospital</h1>
+<p class="font-label-sm text-label-sm text-slate-muted mt-1">Hospital Administrator</p>
+</div>
+<div class="px-4 mb-6">
+<button class="w-full bg-secondary text-white py-3 rounded-lg font-label-md text-label-md flex justify-center items-center gap-2 hover:bg-secondary-container transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                New Admission
+            </button>
+</div>
+<nav class="flex-1 flex flex-col gap-2 px-4 overflow-y-auto">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary/10 text-primary font-semibold border-r-4 border-primary transition-colors cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-muted hover:text-secondary hover:bg-surface-container-low transition-colors duration-200 cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined">person</span>
+                Patients
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-muted hover:text-secondary hover:bg-surface-container-low transition-colors duration-200 cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined">medical_services</span>
+                Doctors
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-muted hover:text-secondary hover:bg-surface-container-low transition-colors duration-200 cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined">event</span>
+                Appointments
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-muted hover:text-secondary hover:bg-surface-container-low transition-colors duration-200 cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+                Departments
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-muted hover:text-secondary hover:bg-surface-container-low transition-colors duration-200 cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined">settings</span>
+                Settings
+            </a>
+</nav>
+<div class="mt-auto px-6 flex items-center gap-3 pt-4 border-t border-outline-variant/20">
+<img alt="Admin Profile Picture" class="w-10 h-10 rounded-full object-cover border border-outline-variant/30" data-alt="A professional headshot of a mature male hospital administrator wearing a sharp suit, smiling warmly. The lighting is soft and corporate, set against a bright, modern hospital corridor background to convey trust and authority in a light-mode UI style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAiM8D6PLgAs8wqc6dkjrwSss8BAfOCxCpouXaeXUiNdHFJZfv5UvL6H9jNamXvu5G5mfXOf8H7v7sq03CPg2d08WokyKPjHHiEFWySs5eg25WXKKfxOvEM3e11gdxHqNq1OJI6xb9ufDKVsjf3SoyWCCb35JqtBfQA_pLKDGJ1E0WX4tDvpdcqiBTYkstEaDsSdDBBqyzOncfwgkpXZNT-x6bbggYbTY4lwVOCxD_4UANVJvgynWxNugh4alsEKz3euW-wyhDWic"/>
+<div>
+<p class="font-label-md text-label-md font-semibold text-on-surface">Admin</p>
+<p class="font-label-sm text-label-sm text-slate-muted">View Profile</p>
+</div>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<div class="flex-1 flex flex-col min-h-screen">
+<!-- TopNavBar -->
+<header class="h-16 w-full sticky top-0 z-40 bg-white/80 backdrop-blur-md shadow-sm border-b border-outline-variant/20 flex justify-between items-center px-margin-desktop transition-all duration-300 ease-in-out">
+<div class="flex items-center gap-4 md:hidden">
+<button class="p-2 text-secondary hover:bg-surface-container-high rounded-full">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-black text-secondary">Apollo Hospital</h1>
+</div>
+<div class="hidden md:flex flex-1 max-w-md mx-8">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-muted">search</span>
+<input class="w-full pl-10 pr-4 py-2 rounded-full border border-outline-variant/50 focus:border-secondary focus:ring-1 focus:ring-secondary/20 bg-surface-off-white outline-none font-label-md text-label-md transition-all" placeholder="Search patients, doctors..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="text-on-surface-variant hover:bg-surface-container-high rounded-full p-2 transition-all duration-300 relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-critical-red rounded-full"></span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-container-high rounded-full p-2 transition-all duration-300 hidden md:block">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+<img alt="Administrator Avatar" class="w-8 h-8 rounded-full object-cover ml-2 md:hidden" data-alt="A professional headshot of a mature male hospital administrator wearing a sharp suit, smiling warmly. The lighting is soft and corporate, set against a bright, modern hospital corridor background to convey trust and authority in a light-mode UI style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEEr1fZOqn6SDpX21OJs3AnOcDYopV9XMgD5sjoVrV5z1Fcm9QHpg9IXgSJq-Af5sOM-ok8L78tdiccpLIExspDExUIavDQ01euB7dI9noJIGETI8yS0yLqVMn63rWSo4bpC7PJATy-DgghK4pQvY-Tky5FM9EV1qeei1VEHvyYleJrEZ53pRTeX6sJCxf_sNvyu5gDsPKZUofHjkItu-KWr5aEJBfLueiujQwz9aFwKwTZYebYW-UG95FUBTevYeD0d-Ua91ATlI"/>
+</div>
+</header>
+<!-- Main Dashboard Canvas -->
+<main class="flex-1 p-margin-mobile md:p-margin-desktop w-full max-w-container-max mx-auto">
+<div class="mb-8">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-2">Overview</h2>
+<p class="text-slate-muted font-body-md text-body-md">Today's hospital metrics at a glance.</p>
+</div>
+<!-- KPI Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter mb-8">
+<!-- Total Patients -->
+<div class="bg-white rounded-xl p-4 card-shadow border border-surface-variant relative overflow-hidden group hover:border-secondary/30 transition-all">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="font-label-sm text-label-sm text-slate-muted uppercase tracking-wider mb-1">Total Patients</p>
+<h3 class="font-headline-md text-headline-md text-on-surface">1,240</h3>
+</div>
+<div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">group</span>
+</div>
+</div>
+<div class="flex items-center gap-2 text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span>+12% from last month</span>
+</div>
+<!-- Decorative Sparkline Placeholder (CSS generated) -->
+<div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-secondary-fixed to-secondary opacity-50"></div>
+</div>
+<!-- Active Doctors -->
+<div class="bg-white rounded-xl p-4 card-shadow border border-surface-variant relative overflow-hidden group hover:border-primary/30 transition-all">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="font-label-sm text-label-sm text-slate-muted uppercase tracking-wider mb-1">Active Doctors</p>
+<h3 class="font-headline-md text-headline-md text-on-surface">48</h3>
+</div>
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">stethoscope</span>
+</div>
+</div>
+<div class="flex items-center gap-2 text-slate-muted font-label-sm text-label-sm">
+<span>Across 8 departments</span>
+</div>
+<div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-primary-fixed to-primary opacity-50"></div>
+</div>
+<!-- Today's Appointments -->
+<div class="bg-white rounded-xl p-4 card-shadow border border-surface-variant relative overflow-hidden group hover:border-warning-orange/30 transition-all">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="font-label-sm text-label-sm text-slate-muted uppercase tracking-wider mb-1">Today's Appts</p>
+<h3 class="font-headline-md text-headline-md text-on-surface">12</h3>
+</div>
+<div class="w-10 h-10 rounded-full bg-warning-orange/10 flex items-center justify-center text-warning-orange">
+<span class="material-symbols-outlined">calendar_today</span>
+</div>
+</div>
+<div class="flex items-center gap-2 text-warning-orange font-label-sm text-label-sm">
+<span>4 pending check-in</span>
+</div>
+<div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-warning-orange/20 to-warning-orange opacity-50"></div>
+</div>
+<!-- Departments -->
+<div class="bg-white rounded-xl p-4 card-shadow border border-surface-variant relative overflow-hidden">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="font-label-sm text-label-sm text-slate-muted uppercase tracking-wider mb-1">Departments</p>
+<h3 class="font-headline-md text-headline-md text-on-surface">8</h3>
+</div>
+<div class="w-10 h-10 rounded-full bg-tertiary/10 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined">domain</span>
+</div>
+</div>
+<div class="flex items-center gap-2 text-slate-muted font-label-sm text-label-sm">
+<span>All operational</span>
+</div>
+</div>
+</div>
+<!-- Content Split: Table & Chart -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Upcoming Appointments List (Span 8) -->
+<div class="lg:col-span-8 bg-white rounded-xl card-shadow border border-surface-variant flex flex-col h-[500px]">
+<div class="p-6 border-b border-surface-variant flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md text-on-surface">Upcoming Appointments</h3>
+<button class="text-secondary font-label-md text-label-md hover:underline">View All</button>
+</div>
+<div class="flex-1 overflow-auto">
+<table class="w-full text-left border-collapse">
+<thead class="sticky top-0 bg-surface-off-white z-10">
+<tr>
+<th class="py-3 px-6 font-label-sm text-label-sm text-slate-muted font-semibold border-b border-surface-variant">Time</th>
+<th class="py-3 px-6 font-label-sm text-label-sm text-slate-muted font-semibold border-b border-surface-variant">Patient Name</th>
+<th class="py-3 px-6 font-label-sm text-label-sm text-slate-muted font-semibold border-b border-surface-variant">Doctor</th>
+<th class="py-3 px-6 font-label-sm text-label-sm text-slate-muted font-semibold border-b border-surface-variant text-right">Action</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md">
+<tr class="hover:bg-primary-fixed/50 transition-colors border-b border-surface-variant/50">
+<td class="py-4 px-6 text-on-surface-variant font-medium">09:00 AM</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center text-secondary font-bold text-xs">SM</div>
+<span class="text-on-surface font-medium">Sarah Miller</span>
+</div>
+</td>
+<td class="py-4 px-6 text-slate-muted">Dr. Alan Grant</td>
+<td class="py-4 px-6 text-right">
+<button class="px-4 py-1.5 rounded-lg bg-primary/10 text-primary font-label-sm text-label-sm hover:bg-primary/20 transition-colors">Check-in</button>
+</td>
+</tr>
+<tr class="hover:bg-primary-fixed/50 transition-colors border-b border-surface-variant/50">
+<td class="py-4 px-6 text-on-surface-variant font-medium">09:30 AM</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-tertiary-fixed text-tertiary flex items-center justify-center font-bold text-xs">JD</div>
+<span class="text-on-surface font-medium">James Dawson</span>
+</div>
+</td>
+<td class="py-4 px-6 text-slate-muted">Dr. Ellie Sattler</td>
+<td class="py-4 px-6 text-right">
+<span class="px-3 py-1 rounded-full bg-primary/10 text-primary font-label-sm text-label-sm">Checked In</span>
+</td>
+</tr>
+<tr class="hover:bg-primary-fixed/50 transition-colors border-b border-surface-variant/50">
+<td class="py-4 px-6 text-on-surface-variant font-medium">10:15 AM</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-3">
+<img alt="Patient Avatar" class="w-8 h-8 rounded-full object-cover" data-alt="A portrait of a young woman smiling subtly, wearing a light colored sweater. The background is slightly blurred. The lighting is soft and natural, fitting a modern, friendly light-mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhmtgykQLh3e02aNTvjsGIAelwBA3KprndnTIOJbAs1O_Tx9a9Jj0mT26cY9k_bSgOdvxERhh9pGFiEaPL-q0qKRbqXOBI7DG32aUVL5N5U5_1_wfTVIABI8rNdUVeohEZLriPdI4AYcBKeMwFGu2RPdibidM2HQyk-fegoBzq8TWBVSuLsF-C0wlZlp22gDKDD2NA4NCpm9M-JMRfCcoFdNyBwoFf2TZwfctQqXUnYVwKrHBzzRBIKxdq0b6kNadEr1vtfLHKgSo"/>
+<span class="text-on-surface font-medium">Emily Chen</span>
+</div>
+</td>
+<td class="py-4 px-6 text-slate-muted">Dr. Ian Malcolm</td>
+<td class="py-4 px-6 text-right">
+<button class="px-4 py-1.5 rounded-lg bg-primary/10 text-primary font-label-sm text-label-sm hover:bg-primary/20 transition-colors">Check-in</button>
+</td>
+</tr>
+<tr class="hover:bg-primary-fixed/50 transition-colors">
+<td class="py-4 px-6 text-on-surface-variant font-medium">11:00 AM</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-variant text-slate-muted flex items-center justify-center font-bold text-xs">MR</div>
+<span class="text-on-surface font-medium">Michael Ross</span>
+</div>
+</td>
+<td class="py-4 px-6 text-slate-muted">Dr. Alan Grant</td>
+<td class="py-4 px-6 text-right">
+<button class="px-4 py-1.5 rounded-lg bg-primary/10 text-primary font-label-sm text-label-sm hover:bg-primary/20 transition-colors">Check-in</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Donut Chart Section (Span 4) -->
+<div class="lg:col-span-4 bg-white rounded-xl card-shadow border border-surface-variant p-6 h-[500px] flex flex-col">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-6">Patients by Blood Group</h3>
+<!-- CSS Donut Chart Implementation -->
+<div class="flex-1 flex flex-col items-center justify-center relative">
+<div class="w-48 h-48 rounded-full relative flex items-center justify-center" style="background: conic-gradient(
+                                theme('colors.secondary') 0% 40%, 
+                                theme('colors.primary') 40% 65%, 
+                                theme('colors.warning-orange') 65% 85%, 
+                                theme('colors.tertiary') 85% 100%
+                             );">
+<!-- Inner circle for donut hole -->
+<div class="w-32 h-32 bg-white rounded-full flex flex-col items-center justify-center shadow-inner">
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface">1.2k</span>
+<span class="font-label-sm text-label-sm text-slate-muted">Total</span>
+</div>
+</div>
+<!-- Legend -->
+<div class="w-full mt-8 grid grid-cols-2 gap-4">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-secondary"></div>
+<span class="font-label-sm text-label-sm text-slate-muted">O+ (40%)</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+<span class="font-label-sm text-label-sm text-slate-muted">A+ (25%)</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-warning-orange"></div>
+<span class="font-label-sm text-label-sm text-slate-muted">B+ (20%)</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-tertiary"></div>
+<span class="font-label-sm text-label-sm text-slate-muted">AB+ (15%)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-stack-md bg-surface-off-white border-t border-outline-variant/10 flex flex-col md:flex-row justify-between items-center px-margin-desktop max-w-container-max mx-auto mt-auto">
+<p class="font-label-md text-label-md font-semibold text-slate-dark">© 2024 Apollo Hospital. All rights reserved.</p>
+<div class="flex gap-4 mt-4 md:mt-0 font-label-sm text-label-sm">
+<a class="text-slate-muted hover:text-secondary transition-colors" href="#">Privacy Policy</a>
+<a class="text-slate-muted hover:text-secondary transition-colors" href="#">Support</a>
+<a class="text-slate-muted hover:text-secondary transition-colors" href="#">Terms of Service</a>
+</div>
+</footer>
+</div>
+</body></html>
