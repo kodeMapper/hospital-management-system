@@ -29,7 +29,7 @@ export default function Layout() {
       <aside className={`${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 transition-transform duration-300 ease-in-out fixed md:sticky left-0 top-0 h-screen w-[260px] bg-surface/95 backdrop-blur-md shadow-sm border-r border-outline-variant/30 py-stack-lg z-50 flex flex-col`}>
         <div className="px-6 mb-8 mt-6 flex justify-between items-center">
           <div>
-            <h1 className="font-headline-md text-headline-md font-bold text-secondary">Chhota Bheem Hospital</h1>
+            <h1 className="font-headline-md text-headline-md font-bold text-secondary">Dholakpur Hospital</h1>
             <p className="font-label-sm text-label-sm text-slate-muted mt-1">Hospital Administrator</p>
           </div>
           <button className="md:hidden text-slate-muted hover:text-secondary" onClick={closeMenu}>
@@ -92,7 +92,7 @@ export default function Layout() {
             >
               <span className="material-symbols-outlined">menu</span>
             </button>
-            <h1 className="font-headline-md text-headline-md font-black text-secondary">Chhota Bheem</h1>
+            <h1 className="font-headline-md text-headline-md font-black text-secondary">Dholakpur</h1>
           </div>
           <div className="hidden md:flex flex-1 max-w-md mx-8">
             <div className="relative w-full">
@@ -117,7 +117,7 @@ export default function Layout() {
 
         {/* Footer */}
         <footer className="w-full py-4 bg-surface-off-white border-t border-outline-variant/10 flex flex-col md:flex-row justify-between items-center px-4 md:px-8 max-w-[1440px] mx-auto mt-auto">
-          <p className="font-label-md text-label-md font-semibold text-slate-dark text-center md:text-left">© 2024 Chhota Bheem Hospital. All rights reserved.</p>
+          <p className="font-label-md text-label-md font-semibold text-slate-dark text-center md:text-left">© 2024 Dholakpur Hospital. All rights reserved.</p>
           <div className="flex gap-4 mt-4 md:mt-0 font-label-sm text-label-sm">
             <a className="text-slate-muted hover:text-secondary transition-colors" href="#">Privacy Policy</a>
             <a className="text-slate-muted hover:text-secondary transition-colors" href="#">Support</a>
