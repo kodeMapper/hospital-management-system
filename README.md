@@ -108,7 +108,7 @@ src/
 ## 🚀 How to Run
 
 1. Clone the repo  
-git clone https://github.com/vishal-Dhule/Hospital-Management-System.git
+git clone https://github.com/kodeMapper/hospital-management-system.git
 
 
 
@@ -124,14 +124,11 @@ git clone https://github.com/vishal-Dhule/Hospital-Management-System.git
 
 ## 👨‍💻 Author
 
-**Vishal Dhule**
+**Sarang Gade**
 💼 Spring Boot Developer  
-📧 Email: vishaldhule605@gmail.com 
+📧 Email: saranganilgade@gmail.com
 
 Linkedin :-
-www.linkedin.com/in/vishal-dhule
+www.linkedin.com/in/sarang-gade
 
 ---
-
-
->>>>>>> 9ad9988cd31c3c8f2424bdc91fb735789cbc38fc
