@@ -117,7 +117,7 @@ export default function Layout() {
 
         {/* Footer */}
         <footer className="w-full py-4 bg-surface-off-white border-t border-outline-variant/10 flex flex-col md:flex-row justify-between items-center px-4 md:px-8 max-w-[1440px] mx-auto mt-auto">
-          <p className="font-label-md text-label-md font-semibold text-slate-dark text-center md:text-left">© 2024 Bellwood Hospital. All rights reserved.</p>
+          <p className="font-label-md text-label-md font-semibold text-slate-dark text-center md:text-left">© 2026 Bellwood Hospital. All rights reserved.</p>
           <div className="flex gap-4 mt-4 md:mt-0 font-label-sm text-label-sm">
             <a className="text-slate-muted hover:text-secondary transition-colors" href="#">Privacy Policy</a>
             <a className="text-slate-muted hover:text-secondary transition-colors" href="#">Support</a>
