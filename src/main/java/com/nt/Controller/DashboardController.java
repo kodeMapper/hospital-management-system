@@ -7,8 +7,6 @@ import com.nt.Repository.PatientRepository;
 import com.nt.dto.DashboardMetricsDTO;
 import com.nt.dto.DTOConverter;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,16 +32,15 @@ public class DashboardController {
         
         // Count today's appointments
         LocalDateTime startOfDay = LocalDateTime.now().toLocalDate().atStartOfDay();
-        LocalDateTime endOfDay = startOfDay.plusDays(1).minusNanos(1);
-        long todayCount = appointmentRepository.findAll().stream()
-            .filter(a -> a.getAppointmentTime().isAfter(startOfDay) && a.getAppointmentTime().isBefore(endOfDay))
-            .count();
-        dto.setTodayAppointments(todayCount);
+        LocalDateTime endOfDay = startOfDay.plusDays(1);
+        dto.setTodayAppointments(
+            appointmentRepository.countByAppointmentTimeGreaterThanEqualAndAppointmentTimeLessThan(startOfDay, endOfDay)
+        );
 
         dto.setBloodGroupDistribution(patientRepository.countEachBloodGroupType());
 
         dto.setUpcomingAppointments(
-            appointmentRepository.findAll(PageRequest.of(0, 5, Sort.by(Sort.Direction.DESC, "appointmentTime")))
+            appointmentRepository.findTop5ByOrderByAppointmentTimeDesc()
                 .stream()
                 .map(DTOConverter::convertAppointment)
                 .collect(Collectors.toList())

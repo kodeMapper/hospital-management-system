@@ -9,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.stream.Collectors;
-import org.springframework.data.domain.Sort;
 
 @RestController
 @RequestMapping("/api/appointments")
@@ -21,7 +20,7 @@ public class AppointmentController {
 
     @GetMapping
     public List<AppointmentDTO> getAllAppointments() {
-        return appointmentRepository.findAll(Sort.by(Sort.Direction.DESC, "appointmentTime")).stream()
+        return appointmentRepository.findAllByOrderByAppointmentTimeDesc().stream()
                 .map(DTOConverter::convertAppointment)
                 .collect(Collectors.toList());
     }
